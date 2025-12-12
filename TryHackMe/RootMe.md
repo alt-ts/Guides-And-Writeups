@@ -4,7 +4,7 @@
 
 As always, we start with an nmap scan to evaluate which ports are open on the target machine. Here I have used the -sS flag along with -sV. The -sS flag runs nmap in a more stealthy mode, dropping the connection before it is fully established while -sV provides greater detail on the services running on the open ports.
 
-![Nmap Scan](_assets/RootMe/nmap_scan_rootme.png)
+![Nmap Scan](/_assets/RootMe/nmap_scan_rootme.png)
 
 The output from the scan shows us that we have we are dealing with a web server running HTTP on the standard port - port 80, as well as SSH on port 22. This means it is time to do some directory busting to try and find some hidden directories. My go-to tool for this is Gobuster, however, dirb is another popular choice.
 
