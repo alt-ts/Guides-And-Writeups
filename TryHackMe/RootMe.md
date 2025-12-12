@@ -18,17 +18,17 @@ This runs through a wordlist of common directory names and attempts to brute-for
 
 Whilst this is running, I decided to check out the webpage in my browser. 
 
-![RootMe Homepage](_assets/RootMe/homepage_rootme.png)
+![RootMe Homepage](/_assets/RootMe/homepage_rootme.png)
 
 There was nothing excited to be found here. I checked the source code too as sometimes web-developers can leave some clues in there but this also returned nothing of interest.
 
 So I returned back to my gobuster scan which had now completed to have a look at the results. Amongst the typical directories there were two which stood out to me, /panel/ and /uploads/. 
 
-![Gobuster results](_assets/RootMe/gobuster_rootme.png)
+![Gobuster results](/_assets/RootMe/gobuster_rootme.png)
 
 After navigating to /panel/ I was presented with a file upload page. One would assume that any files uploaded here would be stored in the /uploads/ directory.
 
-![/panel/ page](_assets/RootMe/panel_rootme.png)
+![/panel/ page](/_assets/RootMe/panel_rootme.png)
 
 If I can upload files to the web server, lets see if it is vulnerable to Remote File Inclusion (RFI). This is a type of vulnerability which enables an attacker to upload a malicious file directly onto the web server thereby gaining shell access to the machine. Admins typically protect against this by sanitising the type of inputs allowed and restricting file types - only allowing permitted file types to be uploaded. Lets see how well this has been implemented.
 
@@ -38,7 +38,7 @@ I would recommend using Burpsuite at this point as it will give you a clearer id
 
 Firstly, I tried uploading a baisc php shell with the hopes that there were no restrictions at all but was greeted with an error message. I don't speak Portuguese, nor am I a gambling man, but I would put good money on it translating to PHP is not permitted.
 
-![PHP not permitted](_assets/RootMe/no-php_rootme.png)
+![PHP not permitted](/_assets/RootMe/no-php_rootme.png)
 
 On to Plan B. I have had luck in the past by changing the file name to shell.php.jpg so I decided to try that. This time the file uploaded but there was an error when trying to run the file. 
 
@@ -76,11 +76,11 @@ One particular file stands out from the resulting list. This is /usr/bin/python2
 
 After navigating to [GTFObins](https://gtfobins.github.io/gtfobins/python/), the go-to for binary privilege escalation techniques, I found this:
 
-![GTFObins results](_assets/RootMe/gtfobins_rootme.png)
+![GTFObins results](/_assets/RootMe/gtfobins_rootme.png)
 
 I made a couple of edits and inputted the command myself:
 
-![Root access](_assets/RootMe/root_rootme.png)
+![Root access](/_assets/RootMe/root_rootme.png)
 
 Now all I need to do is find the root flag which I did with the following command:
 
